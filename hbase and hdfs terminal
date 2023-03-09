@@ -1,0 +1,89 @@
+[training@localhost ~]$ hadoop fs -ls /hbase
+Found 10 items
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 12:20 /hbase/-ROOT-
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 12:20 /hbase/.META.
+drwxr-xr-x   - hbase supergroup          0 2023-01-23 04:49 /hbase/.corrupt
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:42 /hbase/.logs
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:52 /hbase/.oldlogs
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs
+-rw-r--r--   1 hbase supergroup         38 2023-01-22 12:20 /hbase/hbase.id
+-rw-r--r--   1 hbase supergroup          3 2023-01-22 12:20 /hbase/hbase.version
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:42 /hbase/splitlog
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:04 /hbase/user
+[training@localhost ~]$ hadoop fs -ls /hbase/blogs/*
+Found 1 items
+-rw-r--r--   1 hbase supergroup       1365 2023-02-28 06:08 /hbase/blogs/.tableinfo.0000000001
+Found 5 items
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/.oldlogs
+-rw-r--r--   1 hbase supergroup        222 2023-02-28 06:08 /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/.regioninfo
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/body
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/comment
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/meta
+[training@localhost ~]$ hadoop fs -cat /hbase/blogs/d89498f1973c7730d30c7d29ff7f9605/.regioninfo
+���Q6blogs,,1677582487835.d89498f1973c7730d30c7d29ff7f9605.blogs��-
+
+{NAME => 'blogs,,1677582487835.d89498f1973c7730d30c7d29ff7f9605.', STARTKEY => '', ENDKEY => '', ENCODED => d89498f1973c7730d30c7d29ff7f9605,}[traini
+[training@localhost ~]$ hadoop fs -ls /hbase
+Found 11 items
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 12:20 /hbase/-ROOT-
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 12:20 /hbase/.META.
+drwxr-xr-x   - hbase supergroup          0 2023-01-23 04:49 /hbase/.corrupt
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:42 /hbase/.logs
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:52 /hbase/.oldlogs
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:08 /hbase/blogs
+-rw-r--r--   1 hbase supergroup         38 2023-01-22 12:20 /hbase/hbase.id
+-rw-r--r--   1 hbase supergroup          3 2023-01-22 12:20 /hbase/hbase.version
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:23 /hbase/mytable
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 05:42 /hbase/splitlog
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:04 /hbase/user
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable
+Found 3 items
+-rw-r--r--   1 hbase supergroup        515 2023-02-28 06:23 /hbase/mytable/.tableinfo.0000000001
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:23 /hbase/mytable/.tmp
+drwxr-xr-x   - hbase supergroup          0 2023-02-28 06:23 /hbase/mytable/e406ac19bda066df71de689d34d73f3c
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 1 items
+-rw-r--r--   1 hbase supergroup        646 2023-02-28 06:27 /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/c50750af5c604c59a09304ebae50f9cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 2 items
+-rw-r--r--   1 hbase supergroup        613 2023-02-28 06:29 /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/ac46196e90ba445ba26a33efcc349a3d
+-rw-r--r--   1 hbase supergroup        646 2023-02-28 06:27 /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/c50750af5c604c59a09304ebae50f9cf
+[training@localhost ~]$ habse org.apache.hadoop.hbase.io.hfile.HFile --printkv --file hdfs://localhost:8020/<path from 8>
+bash: syntax error near unexpected token `newline'
+[training@localhost ~]$ habse org.apache.hadoop.hbase.io.hfile.HFile \  --printkv --file hdfs://localhost:8020/<path from 8>
+bash: syntax error near unexpected token `newline'
+[training@localhost ~]$ habse org.apache.hadoop.hbase.io.hfile.HFile \
+>  --printkv --file hdfs://localhost:8020/<path from 8>
+bash: syntax error near unexpected token `newline'
+[training@localhost ~]$ habse org.apache.hadoop.hbase.io.hfile.HFile --printkv --file hdfs://localhost:8020/</hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/c50750af5c604c59a09304ebae50f9cf>
+bash: syntax error near unexpected token `newline'
+[training@localhost ~]$ habse org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/c50750af5c604c59a09304ebae50f9cf
+bash: habse: command not found
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/c50750af5c604c59a09304ebae50f9cf
+23/02/28 06:54:22 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/28 06:54:22 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/28 06:54:23 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 124.2m
+K: row1/cf:col/1677583646437/Put/vlen=3 V: foo
+K: rowl/cf:col/1677583587285/Put/vlen=3 V: foo
+Scanned kv count -> 2
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/ac46196e90ba445ba26a33efcc349a3d
+23/02/28 06:55:04 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/28 06:55:04 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/28 06:55:05 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 124.2m
+K: row2/cf:col/1677583726750/Put/vlen=3 V: bar
+Scanned kv count -> 1
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 1 items
+-rw-r--r--   1 hbase supergroup        679 2023-02-28 06:55 /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/fe40483ff00e4dd1bc4eb079879a10f7
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile --printkv --file /hbase/mytable/e406ac19bda066df71de689d34d73f3c/cf/fe40483ff00e4dd1bc4eb079879a10f7
+23/02/28 06:56:33 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/28 06:56:34 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/28 06:56:35 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 124.2m
+K: row1/cf:col/1677583646437/Put/vlen=3 V: foo
+K: row2/cf:col/1677583726750/Put/vlen=3 V: bar
+K: rowl/cf:col/1677583587285/Put/vlen=3 V: foo
+Scanned kv count -> 3
+[training@localhost ~]$ 
